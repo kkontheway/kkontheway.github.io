@@ -48,7 +48,7 @@ jobs:
       # run: git submodule deinit themes/tenacity && git rm themes/tenacity
       # 安装主题
       - name: Install Theme
-        run: git submodule add https://github.com/anzhiyu-c/hexo-theme-anzhiyu.git themes/anzhiyu
+        run: git clone -b main https://github.com/anzhiyu-c/hexo-theme-anzhiyu.git themes/anzhiyu
       - name: Clean
         run: npm run clean
       - name: Build
