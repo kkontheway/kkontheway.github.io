@@ -104,3 +104,4 @@ deploy:
   type: "git"
   repo: git@github.com:kkontheway/kkontheway.github.io.git
   branch: gh-pages
+  message: ${{ github.event.head_commit.message }} # 直接将提交消息传输到 GitHub Pages 存储库
