@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>RTTA-1:AttackNFT</title>
+      <link href="/2023/12/28/RTTA-1-AttackNFT/"/>
+      <url>/2023/12/28/RTTA-1-AttackNFT/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr><p>ERC721<br>ER155</p><h1 id="Common-Issues"><a href="#Common-Issues" class="headerlink" title="Common Issues"></a>Common Issues</h1><hr><h2 id="Reentrancy"><a href="#Reentrancy" class="headerlink" title="Reentrancy"></a>Reentrancy</h2><p>普通的重入攻击，攻击者通过合约漏洞循环调用合约，将合约中的资产转走或者铸造大量代币。转账NFT的时候不会触发合约的fallback或者receive函数，那为什么有重入风险。</p><p>因为在NFT标准中ERC721&#x2F;ERC1155,为了防止用户误把资产转入黑洞而加入了安全转账：如果转入地址为合约，则会调用该地址相应的检查函数，确保它已准备好接收NFT资产。例如 <code>ERC721</code> 的 <code>safeTransferFrom()</code> 函数会调用目标地址的 <code>onERC721Received()</code> 函数，而黑客可以把恶意代码嵌入其中进行攻击。</p><p>危险函数</p><table><thead><tr><th>–</th><th>Function</th><th>External Function</th></tr></thead><tbody><tr><td>ERC721</td><td>safeTransferFrom</td><td>onERC721Received</td></tr><tr><td>ERC721</td><td><code>_safeMint</code></td><td>onERC721Received</td></tr><tr><td>ERC1155</td><td>safeTransferFrom</td><td>onERC1155Received</td></tr><tr><td>ERC1155</td><td><code>_safeBatchTransferFrom</code></td><td>onERC1155Received</td></tr><tr><td>ERC1155</td><td><code>_mint</code></td><td>onERC1155Received</td></tr></tbody></table><h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><h2 id="预防方法"><a href="#预防方法" class="headerlink" title="预防方法"></a>预防方法</h2><ol><li>检查-影响-交互模式：它强调编写函数时，要先检查状态变量是否符合要求，紧接着更新状态变量（例如余额），最后再和别的合约交互。我们可以用这个模式修复有漏洞的<code>mint()</code>函数:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function mint() payable external &#123;</span><br><span class="line">// 检查是否mint过</span><br><span class="line">require(mintedAddress[msg.sender] == false);</span><br><span class="line">// 增加total supply</span><br><span class="line">totalSupply++;</span><br><span class="line">// 记录mint过的地址</span><br><span class="line">mintedAddress[msg.sender] = true;</span><br><span class="line">// mint</span><br><span class="line">_safeMint(msg.sender, totalSupply);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol><h2 id="Logic-issues特权用户抢跑"><a href="#Logic-issues特权用户抢跑" class="headerlink" title="Logic issues特权用户抢跑"></a>Logic issues特权用户抢跑</h2><h2 id="NFT-Market-Issues"><a href="#NFT-Market-Issues" class="headerlink" title="NFT Market Issues"></a>NFT Market Issues</h2><ul><li><strong>Signature verification</strong></li></ul><h2 id="Audit-Example"><a href="#Audit-Example" class="headerlink" title="Audit Example"></a>Audit Example</h2><hr><p><a href="https://0xvolodya.hashnode.dev/nft-attacks">https://0xvolodya.hashnode.dev/nft-attacks</a></p><h2 id="Audit-Guidelines"><a href="#Audit-Guidelines" class="headerlink" title="Audit Guidelines"></a>Audit Guidelines</h2><p><a href="https://blog.quillaudits.com/2023/03/07/nft-marketplace-smart-contract-audit-guidelines/">https://blog.quillaudits.com/2023/03/07/nft-marketplace-smart-contract-audit-guidelines/</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> NFT </tag>
+            
+            <tag> Solidity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>About FuzzingTest</title>
       <link href="/2023/12/28/About-FuzzingTest/"/>
       <url>/2023/12/28/About-FuzzingTest/</url>
