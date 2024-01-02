@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>About_Storage_layout</title>
+      <link href="/2024/01/02/About-Storage-layout/"/>
+      <url>/2024/01/02/About-Storage-layout/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><hr><blockquote><p>Variables are declared as either storage, memory or calldata to explicity specify the location of the data     –solidity-by-example</p></blockquote><ul><li><code>storage</code> - variable is a state variable (store on blockchain))</li><li><code>memory</code> - variable is in memory and it exists while a function is being called</li><li><code>calldata</code> - special data location that contains function arguments</li></ul><h2 id="Detail"><a href="#Detail" class="headerlink" title="Detail"></a>Detail</h2><hr><p>State variables of contracts are stored in storage in a compact way. Sometimes multiple values may use the same storage slot. Except for dynamically-sized arrays and mappings , data is stored contiguously item after item starting with the first state variable ,start from slot 0.</p><p>According to the following rules:</p><ul><li>The first item in a storage slot is stored lower-order aligned.</li><li>Value types use only as many bytes as are necessary to store them.</li><li>If a value type does not fit the remaining part of a storage slot, it is stored in the next storage slot.</li><li>Structs and array data always start a new slot and their items are packed tightly according to these rules.</li><li>Items following struct or array data always start a new storage slot.</li></ul><h2 id="Mapping-and-Dynamic-Arrays"><a href="#Mapping-and-Dynamic-Arrays" class="headerlink" title="Mapping and Dynamic Arrays"></a>Mapping and Dynamic Arrays</h2><hr><p>Due to their unpredictable size, mappings and dynamically-sized array types cannot be stored “in between” the state variables preceding and following them. Instead, they are considered to occupy only 32 bytes with regards to the rules above and the elements they contain are stored starting at a different storage slot that is computed using a Keccak-256 hash.</p><h3 id="Dynamic-Variables"><a href="#Dynamic-Variables" class="headerlink" title="Dynamic Variables"></a>Dynamic Variables</h3><p>The object itself does take up a storage slot, but it doesn’t contain the whole array. Instead, the storage slot contains the length of the array.</p><p>If we add a new element to the array by calling <code>Array.push(123)</code>, the array’s length and the new element are stored at separate locations determined by the hash function</p><h3 id="Mapping"><a href="#Mapping" class="headerlink" title="Mapping"></a>Mapping</h3><p>For mapping it’s has a slot , but it is empty it’s blank</p><h2 id="Temporary-Variables-Function-Scope"><a href="#Temporary-Variables-Function-Scope" class="headerlink" title="Temporary Variables: Function Scope"></a>Temporary Variables: Function Scope</h2><hr><p>For variables that are declared inside a function, their existence is ephemeral and scoped merely to the span of that function. These variables do not persist inside the contract and are not stored in <code>Storage</code>. Instead, they’re stashed in a different memory data structure, which deletes them as soon as the function has finished execution.<br>e.g:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">contract Contract&#123;</span><br><span class="line">    function test(uint val) public &#123;</span><br><span class="line">        uint nVar = val + 5;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>nVar</code> only exists for the duration of <code>test()</code>.</p><h2 id="Memory-Keyword-Necessary-for-Strings"><a href="#Memory-Keyword-Necessary-for-Strings" class="headerlink" title="Memory Keyword: Necessary for Strings"></a>Memory Keyword: Necessary for Strings</h2><p>Finally, the <code>memory</code> keyword. Primarily used with strings, <code>memory</code> is needed because strings are dynamically sized arrays. By using this keyword, we tell Solidity that string operations are to be performed not in <code>Storage</code>, but in a separate memory location.</p><p>Solidity needs this explicit instruction because arrays and mappings require more space, hence the need to ensure that space is allocated in the appropriate data structure.<br>Here’s a code snippet using <code>memory</code> keyword with string:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">contract exampleContract&#123;</span><br><span class="line">    function getString() public pure returns (string memory) &#123;</span><br><span class="line">        return &quot;this is a string!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Constant-immutable"><a href="#Constant-immutable" class="headerlink" title="Constant &amp; immutable"></a>Constant &amp; immutable</h2><hr><p>The Solidity dont store constant or immutable variables in storage instead the vaues will replaced in every occurrence of these variables with their assigned value in the contract’s bytecode.</p><h2 id="Each-Variables-size-Example"><a href="#Each-Variables-size-Example" class="headerlink" title="Each Variables size(Example):"></a>Each Variables size(Example):</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Contract MyContract &#123;</span><br><span class="line">  uint256 zero;                          // in slot 0</span><br><span class="line">  mapping(address =&gt; uint256) one;    // in slot 1</span><br><span class="line">  address two;                          // in slot 2 </span><br><span class="line">  bool a;                              // in slot 3 - 1 byte</span><br><span class="line">  uint8 b;                             // in slot 3 - 1 byte </span><br><span class="line">  bytes16 c;                           // in slot 3 - 16 bytes</span><br><span class="line">  address immutable noWhere;           // Do not stored on storage</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Use-Foundry"><a href="#Use-Foundry" class="headerlink" title="Use Foundry"></a>Use Foundry</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forge inspect contract_name storage</span><br></pre></td></tr></table></figure><p><img src="/../images/storageimg.png"></p><h2 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h2><p><a href="https://docs.soliditylang.org/en/v0.8.20/internals/layout_in_storage.html">https://docs.soliditylang.org/en/v0.8.20/internals/layout_in_storage.html</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Solidity </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Solidity </tag>
+            
+            <tag> Basic </tag>
+            
+            <tag> Storage </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>DamnVulnerableDeFi-10</title>
       <link href="/2023/12/29/DamnVulnerableDeFi-10/"/>
       <url>/2023/12/29/DamnVulnerableDeFi-10/</url>
@@ -174,9 +203,9 @@
       
         <tags>
             
-            <tag> NFT </tag>
-            
             <tag> Solidity </tag>
+            
+            <tag> NFT </tag>
             
         </tags>
       

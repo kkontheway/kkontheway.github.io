@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Summary  Variables are declared as either storage, memory or calldata to explicity specify the location of the data     –solidity-by-example   storage - variable is a state variable (store on blockcha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="About_Storage_layout">
+<meta property="og:url" content="http://example.com/2024/01/02/About-Storage-layout/index.html">
+<meta property="og:site_name" content="KK&#39;s Note">
+<meta property="og:description" content="Summary  Variables are declared as either storage, memory or calldata to explicity specify the location of the data     –solidity-by-example   storage - variable is a state variable (store on blockcha">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/storageimg.png">
+<meta property="article:published_time" content="2024-01-02T01:48:19.000Z">
+<meta property="article:modified_time" content="2024-01-02T01:52:28.754Z">
+<meta property="article:author" content="KKontheway">
+<meta property="article:tag" content="Solidity">
+<meta property="article:tag" content="Basic">
+<meta property="article:tag" content="Storage">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/storageimg.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>About_Storage_layout</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/kkontheway">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/12/29/DamnVulnerableDeFi-10/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/02/About-Storage-layout/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/02/About-Storage-layout/&text=About_Storage_layout"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/02/About-Storage-layout/&title=About_Storage_layout"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/02/About-Storage-layout/&is_video=false&description=About_Storage_layout"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=About_Storage_layout&body=Check out this article: http://example.com/2024/01/02/About-Storage-layout/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/02/About-Storage-layout/&title=About_Storage_layout"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/02/About-Storage-layout/&title=About_Storage_layout"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/02/About-Storage-layout/&title=About_Storage_layout"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/02/About-Storage-layout/&title=About_Storage_layout"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/02/About-Storage-layout/&name=About_Storage_layout&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/02/About-Storage-layout/&t=About_Storage_layout"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-number">1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Detail"><span class="toc-number">2.</span> <span class="toc-text">Detail</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mapping-and-Dynamic-Arrays"><span class="toc-number">3.</span> <span class="toc-text">Mapping and Dynamic Arrays</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic-Variables"><span class="toc-number">3.1.</span> <span class="toc-text">Dynamic Variables</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mapping"><span class="toc-number">3.2.</span> <span class="toc-text">Mapping</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Temporary-Variables-Function-Scope"><span class="toc-number">4.</span> <span class="toc-text">Temporary Variables: Function Scope</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Memory-Keyword-Necessary-for-Strings"><span class="toc-number">5.</span> <span class="toc-text">Memory Keyword: Necessary for Strings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Constant-immutable"><span class="toc-number">6.</span> <span class="toc-text">Constant &amp; immutable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Each-Variables-size-Example"><span class="toc-number">7.</span> <span class="toc-text">Each Variables size(Example):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Use-Foundry"><span class="toc-number">8.</span> <span class="toc-text">Use Foundry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#refer"><span class="toc-number">9.</span> <span class="toc-text">refer</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        About_Storage_layout
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">KKontheway</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-01-02T01:48:19.000Z" class="dt-published" itemprop="datePublished">2024-01-02</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/Solidity/">Solidity</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Basic/" rel="tag">Basic</a>, <a class="p-category" href="/tags/Solidity/" rel="tag">Solidity</a>, <a class="p-category" href="/tags/Storage/" rel="tag">Storage</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><hr>
+<blockquote>
+<p>Variables are declared as either storage, memory or calldata to explicity specify the location of the data     –solidity-by-example</p>
+</blockquote>
+<ul>
+<li><code>storage</code> - variable is a state variable (store on blockchain))</li>
+<li><code>memory</code> - variable is in memory and it exists while a function is being called</li>
+<li><code>calldata</code> - special data location that contains function arguments</li>
+</ul>
+<h2 id="Detail"><a href="#Detail" class="headerlink" title="Detail"></a>Detail</h2><hr>
+<p>State variables of contracts are stored in storage in a compact way. Sometimes multiple values may use the same storage slot. Except for dynamically-sized arrays and mappings , data is stored contiguously item after item starting with the first state variable ,start from slot 0.</p>
+<p>According to the following rules:</p>
+<ul>
+<li>The first item in a storage slot is stored lower-order aligned.</li>
+<li>Value types use only as many bytes as are necessary to store them.</li>
+<li>If a value type does not fit the remaining part of a storage slot, it is stored in the next storage slot.</li>
+<li>Structs and array data always start a new slot and their items are packed tightly according to these rules.</li>
+<li>Items following struct or array data always start a new storage slot.</li>
+</ul>
+<h2 id="Mapping-and-Dynamic-Arrays"><a href="#Mapping-and-Dynamic-Arrays" class="headerlink" title="Mapping and Dynamic Arrays"></a>Mapping and Dynamic Arrays</h2><hr>
+<p>Due to their unpredictable size, mappings and dynamically-sized array types cannot be stored “in between” the state variables preceding and following them. Instead, they are considered to occupy only 32 bytes with regards to the rules above and the elements they contain are stored starting at a different storage slot that is computed using a Keccak-256 hash.</p>
+<h3 id="Dynamic-Variables"><a href="#Dynamic-Variables" class="headerlink" title="Dynamic Variables"></a>Dynamic Variables</h3><p>The object itself does take up a storage slot, but it doesn’t contain the whole array. Instead, the storage slot contains the length of the array.</p>
+<p>If we add a new element to the array by calling <code>Array.push(123)</code>, the array’s length and the new element are stored at separate locations determined by the hash function</p>
+<h3 id="Mapping"><a href="#Mapping" class="headerlink" title="Mapping"></a>Mapping</h3><p>For mapping it’s has a slot , but it is empty it’s blank</p>
+<h2 id="Temporary-Variables-Function-Scope"><a href="#Temporary-Variables-Function-Scope" class="headerlink" title="Temporary Variables: Function Scope"></a>Temporary Variables: Function Scope</h2><hr>
+<p>For variables that are declared inside a function, their existence is ephemeral and scoped merely to the span of that function. These variables do not persist inside the contract and are not stored in <code>Storage</code>. Instead, they’re stashed in a different memory data structure, which deletes them as soon as the function has finished execution.<br>e.g:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">contract Contract&#123;</span><br><span class="line">    function test(uint val) public &#123;</span><br><span class="line">        uint nVar = val + 5;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>nVar</code> only exists for the duration of <code>test()</code>.</p>
+<h2 id="Memory-Keyword-Necessary-for-Strings"><a href="#Memory-Keyword-Necessary-for-Strings" class="headerlink" title="Memory Keyword: Necessary for Strings"></a>Memory Keyword: Necessary for Strings</h2><p>Finally, the <code>memory</code> keyword. Primarily used with strings, <code>memory</code> is needed because strings are dynamically sized arrays. By using this keyword, we tell Solidity that string operations are to be performed not in <code>Storage</code>, but in a separate memory location.</p>
+<p>Solidity needs this explicit instruction because arrays and mappings require more space, hence the need to ensure that space is allocated in the appropriate data structure.<br>Here’s a code snippet using <code>memory</code> keyword with string:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">contract exampleContract&#123;</span><br><span class="line">    function getString() public pure returns (string memory) &#123;</span><br><span class="line">        return &quot;this is a string!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Constant-immutable"><a href="#Constant-immutable" class="headerlink" title="Constant &amp; immutable"></a>Constant &amp; immutable</h2><hr>
+<p>The Solidity dont store constant or immutable variables in storage instead the vaues will replaced in every occurrence of these variables with their assigned value in the contract’s bytecode.</p>
+<h2 id="Each-Variables-size-Example"><a href="#Each-Variables-size-Example" class="headerlink" title="Each Variables size(Example):"></a>Each Variables size(Example):</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Contract MyContract &#123;</span><br><span class="line">  uint256 zero;                          // in slot 0</span><br><span class="line">  mapping(address =&gt; uint256) one;    // in slot 1</span><br><span class="line">  address two;                          // in slot 2 </span><br><span class="line">  bool a;                              // in slot 3 - 1 byte</span><br><span class="line">  uint8 b;                             // in slot 3 - 1 byte </span><br><span class="line">  bytes16 c;                           // in slot 3 - 16 bytes</span><br><span class="line">  address immutable noWhere;           // Do not stored on storage</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Use-Foundry"><a href="#Use-Foundry" class="headerlink" title="Use Foundry"></a>Use Foundry</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forge inspect contract_name storage</span><br></pre></td></tr></table></figure>
+<p><img src="/../images/storageimg.png"></p>
+<h2 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h2><p><a target="_blank" rel="noopener" href="https://docs.soliditylang.org/en/v0.8.20/internals/layout_in_storage.html">https://docs.soliditylang.org/en/v0.8.20/internals/layout_in_storage.html</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/kkontheway">Projects</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-number">1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Detail"><span class="toc-number">2.</span> <span class="toc-text">Detail</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mapping-and-Dynamic-Arrays"><span class="toc-number">3.</span> <span class="toc-text">Mapping and Dynamic Arrays</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic-Variables"><span class="toc-number">3.1.</span> <span class="toc-text">Dynamic Variables</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mapping"><span class="toc-number">3.2.</span> <span class="toc-text">Mapping</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Temporary-Variables-Function-Scope"><span class="toc-number">4.</span> <span class="toc-text">Temporary Variables: Function Scope</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Memory-Keyword-Necessary-for-Strings"><span class="toc-number">5.</span> <span class="toc-text">Memory Keyword: Necessary for Strings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Constant-immutable"><span class="toc-number">6.</span> <span class="toc-text">Constant &amp; immutable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Each-Variables-size-Example"><span class="toc-number">7.</span> <span class="toc-text">Each Variables size(Example):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Use-Foundry"><span class="toc-number">8.</span> <span class="toc-text">Use Foundry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#refer"><span class="toc-number">9.</span> <span class="toc-text">refer</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/02/About-Storage-layout/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/02/About-Storage-layout/&text=About_Storage_layout"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/02/About-Storage-layout/&title=About_Storage_layout"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/02/About-Storage-layout/&is_video=false&description=About_Storage_layout"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=About_Storage_layout&body=Check out this article: http://example.com/2024/01/02/About-Storage-layout/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/02/About-Storage-layout/&title=About_Storage_layout"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/02/About-Storage-layout/&title=About_Storage_layout"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/02/About-Storage-layout/&title=About_Storage_layout"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/02/About-Storage-layout/&title=About_Storage_layout"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/02/About-Storage-layout/&name=About_Storage_layout&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/02/About-Storage-layout/&t=About_Storage_layout"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    KKontheway
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/kkontheway">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
