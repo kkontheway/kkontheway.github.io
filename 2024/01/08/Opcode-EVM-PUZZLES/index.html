@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Puzzles112345678910111213141516############# Puzzle 1 #############00      34      CALLVALUE01      56      JUMP02      FD      REVERT03      FD      REVERT04      FD      REVERT05      FD      REVERT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Opcode-EVM_PUZZLES">
+<meta property="og:url" content="http://example.com/2024/01/08/Opcode-EVM-PUZZLES/index.html">
+<meta property="og:site_name" content="KK&#39;s Note">
+<meta property="og:description" content="Puzzles112345678910111213141516############# Puzzle 1 #############00      34      CALLVALUE01      56      JUMP02      FD      REVERT03      FD      REVERT04      FD      REVERT05      FD      REVERT">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-01-08T05:42:30.000Z">
+<meta property="article:modified_time" content="2024-01-08T07:19:10.359Z">
+<meta property="article:author" content="KKontheway">
+<meta property="article:tag" content="solidity">
+<meta property="article:tag" content="opcodes">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Opcode-EVM_PUZZLES</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/kkontheway">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/01/05/About-Uniswap/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&text=Opcode-EVM_PUZZLES"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&title=Opcode-EVM_PUZZLES"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&is_video=false&description=Opcode-EVM_PUZZLES"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Opcode-EVM_PUZZLES&body=Check out this article: http://example.com/2024/01/08/Opcode-EVM-PUZZLES/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&title=Opcode-EVM_PUZZLES"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&title=Opcode-EVM_PUZZLES"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&title=Opcode-EVM_PUZZLES"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&title=Opcode-EVM_PUZZLES"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&name=Opcode-EVM_PUZZLES&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&t=Opcode-EVM_PUZZLES"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles1"><span class="toc-number">1.</span> <span class="toc-text">Puzzles1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles2"><span class="toc-number">2.</span> <span class="toc-text">Puzzles2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles3"><span class="toc-number">3.</span> <span class="toc-text">Puzzles3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles4"><span class="toc-number">4.</span> <span class="toc-text">Puzzles4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles5"><span class="toc-number">5.</span> <span class="toc-text">Puzzles5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles6"><span class="toc-number">6.</span> <span class="toc-text">Puzzles6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles7"><span class="toc-number">7.</span> <span class="toc-text">Puzzles7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles8"><span class="toc-number">8.</span> <span class="toc-text">Puzzles8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles9"><span class="toc-number">9.</span> <span class="toc-text">Puzzles9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles10"><span class="toc-number">10.</span> <span class="toc-text">Puzzles10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles11"><span class="toc-number">11.</span> <span class="toc-text">Puzzles11</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles12"><span class="toc-number">12.</span> <span class="toc-text">Puzzles12</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Opcode-EVM_PUZZLES
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">KKontheway</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-01-08T05:42:30.000Z" class="dt-published" itemprop="datePublished">2024-01-08</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/evm-puzzles/">evm-puzzles</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/opcodes/" rel="tag">opcodes</a>, <a class="p-category" href="/tags/solidity/" rel="tag">solidity</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="Puzzles1"><a href="#Puzzles1" class="headerlink" title="Puzzles1"></a>Puzzles1</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">############</span><br><span class="line"># Puzzle 1 #</span><br><span class="line">############</span><br><span class="line"></span><br><span class="line">00      34      CALLVALUE</span><br><span class="line">01      56      JUMP</span><br><span class="line">02      FD      REVERT</span><br><span class="line">03      FD      REVERT</span><br><span class="line">04      FD      REVERT</span><br><span class="line">05      FD      REVERT</span><br><span class="line">06      FD      REVERT</span><br><span class="line">07      FD      REVERT</span><br><span class="line">08      5B      JUMPDEST</span><br><span class="line">09      00      STOP</span><br><span class="line"></span><br><span class="line">? Enter the value to send: (0) </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>考察JUMP</p>
+</blockquote>
+<p><strong>CALLVALUE</strong></p>
+<ul>
+<li>操作码：<code>0x34</code></li>
+<li>gas消耗: 2</li>
+<li>功能：将发送给合约的ether的数量（以wei为单位）压入堆栈。</li>
+<li>使用场景：当合约需要知道有多少以太币被发送时使用。</li>
+</ul>
+<p><strong>JUMP</strong><br><code>JUMP</code>指令用于无条件跳转到一个新的程序计数器位置。它从堆栈中弹出一个元素（也就是栈顶），将这个元素设定为新的程序计数器（<code>pc</code>）的值。操作码是<code>0x56</code>，gas消耗为8。</p>
+<p><strong>JUMPDEST</strong></p>
+<p><code>JUMPDEST</code>指令标记一个有效的跳转目标位置，不然无法使用<code>JUMP</code>和<code>JUMPI</code>进行跳转。它的操作码是<code>0x5b</code>，<code>gas</code>消耗为1。<br><code>JUMP</code> 和 <code>JUMPI</code> 指令只能跳转到被标记为 <code>JUMPDEST</code> 的位置。这个机制是为了确保代码的安全性，防止通过跳转到随机或不合适的代码位置来执行潜在的恶意操作。</p>
+<p>所以输入<code>8</code>,使<code>CALLVALUE=8</code>，通过挑战</p>
+<h2 id="Puzzles2"><a href="#Puzzles2" class="headerlink" title="Puzzles2"></a>Puzzles2</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">############</span><br><span class="line"># Puzzle 2 #</span><br><span class="line">############</span><br><span class="line"></span><br><span class="line">00      34      CALLVALUE</span><br><span class="line">01      38      CODESIZE</span><br><span class="line">02      03      SUB</span><br><span class="line">03      56      JUMP</span><br><span class="line">04      FD      REVERT</span><br><span class="line">05      FD      REVERT</span><br><span class="line">06      5B      JUMPDEST</span><br><span class="line">07      00      STOP</span><br><span class="line">08      FD      REVERT</span><br><span class="line">09      FD      REVERT</span><br></pre></td></tr></table></figure>
+<p><strong>CODESIZE</strong></p>
+<ul>
+<li>操作码：<code>0x38</code></li>
+<li>gas消耗： 2</li>
+<li>功能：获取当前合约代码的字节长度，然后压入堆栈。</li>
+<li>使用场景：当合约需要访问自己的字节码时使用。</li>
+</ul>
+<p>在这里就是10</p>
+<p><strong>SUB</strong><br>算数指令<code>SUB</code>指令从堆栈顶部弹出两个元素，然后计算第一个元素减去第二个元素，最后将结果推入堆栈。这个指令的操作码是<code>0x03</code>，gas消耗为<code>3</code>。</p>
+<p>所以目标是 <code>CODESIZE - CALLVALUE = 6</code></p>
+<p>所以我们使得 <code>CALLVALUE = 4</code> ，就可以通过挑战</p>
+<h2 id="Puzzles3"><a href="#Puzzles3" class="headerlink" title="Puzzles3"></a>Puzzles3</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">############</span><br><span class="line"># Puzzle 3 #</span><br><span class="line">############</span><br><span class="line"></span><br><span class="line">00      36      CALLDATASIZE</span><br><span class="line">01      56      JUMP</span><br><span class="line">02      FD      REVERT</span><br><span class="line">03      FD      REVERT</span><br><span class="line">04      5B      JUMPDEST</span><br><span class="line">05      00      STOP</span><br></pre></td></tr></table></figure>
+
+<p><strong>CALLDATASIZE</strong></p>
+<ul>
+<li>操作码：<code>0x36</code></li>
+<li>gas消耗：2</li>
+<li>功能：获取交易或合约调用的<code>data</code>字段的字节长度，并压入堆栈。</li>
+<li>使用场景：在读取数据之前检查大小。</li>
+</ul>
+<p>所以我们传入任意四位长度的data就可以了，<code>CALLDATASIZE = 0x00000000</code></p>
+<h2 id="Puzzles4"><a href="#Puzzles4" class="headerlink" title="Puzzles4"></a>Puzzles4</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">############</span><br><span class="line"># Puzzle 4 #</span><br><span class="line">############</span><br><span class="line"></span><br><span class="line">00      34      CALLVALUE</span><br><span class="line">01      38      CODESIZE</span><br><span class="line">02      18      XOR</span><br><span class="line">03      56      JUMP</span><br><span class="line">04      FD      REVERT</span><br><span class="line">05      FD      REVERT</span><br><span class="line">06      FD      REVERT</span><br><span class="line">07      FD      REVERT</span><br><span class="line">08      FD      REVERT</span><br><span class="line">09      FD      REVERT</span><br><span class="line">0A      5B      JUMPDEST</span><br><span class="line">0B      00      STOP</span><br></pre></td></tr></table></figure>
+
+<p><strong>XOR</strong><br><code>XOR</code>指令与<code>AND</code>和<code>OR</code>指令类似，但执行的是异或运算。操作码是<code>0x18</code>，gas 消耗为<code>3</code>。</p>
+<p>也就是我们使得<code>CALLVALUE xor 0x0c = a</code> 也就是<code>CALLVALUE xor 1100 = 1010</code>，<code>CALLVALUE = 0110 = 6</code></p>
+<h2 id="Puzzles5"><a href="#Puzzles5" class="headerlink" title="Puzzles5"></a>Puzzles5</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">############</span><br><span class="line"># Puzzle 5 #</span><br><span class="line">############</span><br><span class="line"></span><br><span class="line">00      34          CALLVALUE</span><br><span class="line">01      80          DUP1</span><br><span class="line">02      02          MUL</span><br><span class="line">03      610100      PUSH2 0100</span><br><span class="line">06      14          EQ</span><br><span class="line">07      600C        PUSH1 0C</span><br><span class="line">09      57          JUMPI</span><br><span class="line">0A      FD          REVERT</span><br><span class="line">0B      FD          REVERT</span><br><span class="line">0C      5B          JUMPDEST</span><br><span class="line">0D      00          STOP</span><br><span class="line">0E      FD          REVERT</span><br><span class="line">0F      FD          REVERT</span><br></pre></td></tr></table></figure>
+
+<p><strong>DUP1</strong><br>在EVM中，<code>DUP</code>是一系列的指令，总共有16个，从<code>DUP1</code>到<code>DUP16</code>，操作码范围为<code>0x80</code>到<code>0x8F</code>，gas消耗均为3。这些指令用于复制（Duplicate）堆栈上的指定元素（根据指令的序号）到堆栈顶部。例如，<code>DUP1</code>复制栈顶元素，<code>DUP2</code>复制距离栈顶的第二个元素，以此类推。</p>
+<p><strong>MUL</strong><br>MUL<code>指令和</code>ADD<code>类似，但是它将堆栈的顶部两个元素相乘。操作码是</code>0x02<code>，gas消耗为</code>5&#96;。</p>
+<p><strong>EQ</strong><br>EQ<code>指令从堆栈中弹出两个元素，如果两个元素相等，那么将</code>1<code>推入堆栈，否则将</code>0<code>推入堆栈。该指令的操作码是</code>0x14<code>，gas消耗为</code>3&#96;。</p>
+<p><strong>JUMPI</strong><br><code>JUMPI</code>指令用于条件跳转，它从堆栈中弹出两个元素，如果第二个元素（条件，<code>condition</code>）不为0，那么将第一个元素（目标，<code>destination</code>）设定为新的<code>pc</code>的值。操作码是<code>0x57</code>，gas消耗为10。</p>
+<p>所以我们要使<code>CALLVALUE * CALLVALUE = 0x100</code> ，所以我们可以得到<code>CALLVALUE = 16</code></p>
+<h2 id="Puzzles6"><a href="#Puzzles6" class="headerlink" title="Puzzles6"></a>Puzzles6</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">############</span><br><span class="line"># Puzzle 6 #</span><br><span class="line">############</span><br><span class="line"></span><br><span class="line">00      6000      PUSH1 00</span><br><span class="line">02      35        CALLDATALOAD</span><br><span class="line">03      56        JUMP</span><br><span class="line">04      FD        REVERT</span><br><span class="line">05      FD        REVERT</span><br><span class="line">06      FD        REVERT</span><br><span class="line">07      FD        REVERT</span><br><span class="line">08      FD        REVERT</span><br><span class="line">09      FD        REVERT</span><br><span class="line">0A      5B        JUMPDEST</span><br><span class="line">0B      00        STOP</span><br></pre></td></tr></table></figure>
+<p><strong>CALLDATALOAD</strong></p>
+<ul>
+<li>操作码：<code>0x35</code></li>
+<li>gas消耗: 3</li>
+<li>功能：从交易或合约调用的<code>data</code>字段加载数据。它从堆栈中弹出calldata的偏移量（<code>offset</code>），然后从calldata的<code>offset</code>位置读取32字节的数据并压入堆栈。如果<code>calldata</code>剩余不足32字节，则补0。</li>
+<li>使用场景：读取传入的数据。</li>
+</ul>
+<p>因为<code>JUMPDEST</code>在<code>0A</code>，所以传入：<code>0x000000000000000000000000000000000000000000000000000000000000000a</code></p>
+<h2 id="Puzzles7"><a href="#Puzzles7" class="headerlink" title="Puzzles7"></a>Puzzles7</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">############</span><br><span class="line"># Puzzle 7 #</span><br><span class="line">############</span><br><span class="line"></span><br><span class="line">00      36        CALLDATASIZE</span><br><span class="line">01      6000      PUSH1 00</span><br><span class="line">03      80        DUP1  //=CALLDATASIZE</span><br><span class="line">04      37        CALLDATACOPY</span><br><span class="line">05      36        CALLDATASIZE</span><br><span class="line">06      6000      PUSH1 00</span><br><span class="line">08      6000      PUSH1 00</span><br><span class="line">0A      F0        CREATE</span><br><span class="line">0B      3B        EXTCODESIZE</span><br><span class="line">0C      6001      PUSH1 01</span><br><span class="line">0E      14        EQ</span><br><span class="line">0F      6013      PUSH1 13</span><br><span class="line">11      57        JUMPI</span><br><span class="line">12      FD        REVERT</span><br><span class="line">13      5B        JUMPDEST</span><br><span class="line">14      00        STOP</span><br></pre></td></tr></table></figure>
+
+<p><strong>CALLDATACOPY</strong></p>
+<ul>
+<li>操作码：<code>0x37</code></li>
+<li>gas消耗：3 + 3 * 数据长度 + 内存扩展成本</li>
+<li>功能：将<code>data</code>中的数据复制到内存中。它会从堆栈中弹出3个参数(mem_offset, calldata_offset, length)，分别对应写到内存的偏移量，读取calldata的偏移量和长度。</li>
+<li>使用场景：将输入数据复制到内存。</li>
+</ul>
+<p><strong>CREATE</strong></p>
+<h2 id="Puzzles8"><a href="#Puzzles8" class="headerlink" title="Puzzles8"></a>Puzzles8</h2><h2 id="Puzzles9"><a href="#Puzzles9" class="headerlink" title="Puzzles9"></a>Puzzles9</h2><h2 id="Puzzles10"><a href="#Puzzles10" class="headerlink" title="Puzzles10"></a>Puzzles10</h2><h2 id="Puzzles11"><a href="#Puzzles11" class="headerlink" title="Puzzles11"></a>Puzzles11</h2><h2 id="Puzzles12"><a href="#Puzzles12" class="headerlink" title="Puzzles12"></a>Puzzles12</h2>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/kkontheway">Projects</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles1"><span class="toc-number">1.</span> <span class="toc-text">Puzzles1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles2"><span class="toc-number">2.</span> <span class="toc-text">Puzzles2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles3"><span class="toc-number">3.</span> <span class="toc-text">Puzzles3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles4"><span class="toc-number">4.</span> <span class="toc-text">Puzzles4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles5"><span class="toc-number">5.</span> <span class="toc-text">Puzzles5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles6"><span class="toc-number">6.</span> <span class="toc-text">Puzzles6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles7"><span class="toc-number">7.</span> <span class="toc-text">Puzzles7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles8"><span class="toc-number">8.</span> <span class="toc-text">Puzzles8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles9"><span class="toc-number">9.</span> <span class="toc-text">Puzzles9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles10"><span class="toc-number">10.</span> <span class="toc-text">Puzzles10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles11"><span class="toc-number">11.</span> <span class="toc-text">Puzzles11</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzles12"><span class="toc-number">12.</span> <span class="toc-text">Puzzles12</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&text=Opcode-EVM_PUZZLES"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&title=Opcode-EVM_PUZZLES"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&is_video=false&description=Opcode-EVM_PUZZLES"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Opcode-EVM_PUZZLES&body=Check out this article: http://example.com/2024/01/08/Opcode-EVM-PUZZLES/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&title=Opcode-EVM_PUZZLES"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&title=Opcode-EVM_PUZZLES"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&title=Opcode-EVM_PUZZLES"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&title=Opcode-EVM_PUZZLES"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&name=Opcode-EVM_PUZZLES&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/08/Opcode-EVM-PUZZLES/&t=Opcode-EVM_PUZZLES"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    KKontheway
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/kkontheway">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
