@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Cyfrin-SecurityCourseNote</title>
+      <link href="/2024/04/03/Cyfrin-SecurityCourseNote/"/>
+      <url>/2024/04/03/Cyfrin-SecurityCourseNote/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Prev"><a href="#Prev" class="headerlink" title="Prev"></a>Prev</h1><p>I spent 2 month on Cyfrin Security Course , These are my Note , I take a little deep on each Topic</p><h1 id="Lesson-0-Tools"><a href="#Lesson-0-Tools" class="headerlink" title="Lesson 0 - Tools"></a>Lesson 0 - Tools</h1><ol><li>[Slither]<a href="https://kkweb3doc.vercel.app/Web3tools/Slither">https://kkweb3doc.vercel.app/Web3tools/Slither</a></li><li>Aderyn</li></ol><h1 id="Lesson-1-PasswordStore"><a href="#Lesson-1-PasswordStore" class="headerlink" title="Lesson 1 - PasswordStore"></a>Lesson 1 - PasswordStore</h1><ol><li>Public Data</li><li><a href="https://kkweb3doc.vercel.app/security/AccessControl">Access Control Vuln</a></li></ol><h1 id="Lesson-2-Puppy-Raffle"><a href="#Lesson-2-Puppy-Raffle" class="headerlink" title="Lesson 2 - Puppy Raffle"></a>Lesson 2 - Puppy Raffle</h1><ol><li><a href="https://kkweb3doc.vercel.app/security/Reentrancy">Reentrancy</a></li><li><a href="https://kkweb3doc.vercel.app/security/WeakRandom">Weak Randomness</a></li><li>[Over&#x2F;Under Flow]</li><li>[Mishandling Of ETH]</li><li>[CEI]</li></ol><h1 id="Lesson-3-Tsawp"><a href="#Lesson-3-Tsawp" class="headerlink" title="Lesson 3 - Tsawp"></a>Lesson 3 - Tsawp</h1><ol><li><a href="https://kkweb3doc.vercel.app/solidity/Defi/AMM">AMM</a></li><li>Fuzz Test</li><li>Weird ERC20</li></ol><h1 id="Lesson-4-Thunder-Loan"><a href="#Lesson-4-Thunder-Loan" class="headerlink" title="Lesson 4 - Thunder Loan"></a>Lesson 4 - Thunder Loan</h1><ol><li><a href="https://kkweb3doc.vercel.app/security/ProxySecurity#1unintialized-proxy-vuln">Failure To Initialize</a></li><li><a href="https://kkweb3doc.vercel.app/security/FlashLoan">Attack FlashLoan</a></li><li><a href="https://kkweb3doc.vercel.app/solidity/Application/ERC4626">ERC4626</a></li><li><a href="https://kkweb3doc.vercel.app/security/Oracle&PriceManipulation">Oracle Manipulation</a></li><li><a href="https://kkweb3doc.vercel.app/security/ProxySecurity#2storage-collision-vulnerability">Storage Collision</a></li></ol><h1 id="Lesson-5-Boss-bridge"><a href="#Lesson-5-Boss-bridge" class="headerlink" title="Lesson 5 - Boss bridge"></a>Lesson 5 - Boss bridge</h1><h1 id="Lesson-6-Mev-Goverence"><a href="#Lesson-6-Mev-Goverence" class="headerlink" title="Lesson 6 - Mev&amp;Goverence"></a>Lesson 6 - Mev&amp;Goverence</h1><h1 id="Lesson-7-How-to-Write-Audit-Report-From-each-Lesson"><a href="#Lesson-7-How-to-Write-Audit-Report-From-each-Lesson" class="headerlink" title="Lesson 7 - How to Write Audit Report(From each Lesson)"></a>Lesson 7 - How to Write Audit Report(From each Lesson)</h1>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>OnlyPwner-PleaseSignHere</title>
       <link href="/2024/03/12/OnlyPwner-PleaseSignHere/"/>
       <url>/2024/03/12/OnlyPwner-PleaseSignHere/</url>

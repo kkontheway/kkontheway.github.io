@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="PrevI spent 2 month on Cyfrin Security Course , These are my Note , I take a little deep on each Topic Lesson 0 - Tools [Slither]https:&#x2F;&#x2F;kkweb3doc.vercel.app&#x2F;Web3tools&#x2F;Slither Aderyn  Lesson 1 - Passw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cyfrin-SecurityCourseNote">
+<meta property="og:url" content="http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/index.html">
+<meta property="og:site_name" content="KK&#39;s Note">
+<meta property="og:description" content="PrevI spent 2 month on Cyfrin Security Course , These are my Note , I take a little deep on each Topic Lesson 0 - Tools [Slither]https:&#x2F;&#x2F;kkweb3doc.vercel.app&#x2F;Web3tools&#x2F;Slither Aderyn  Lesson 1 - Passw">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-03T01:37:35.000Z">
+<meta property="article:modified_time" content="2024-04-03T01:37:56.740Z">
+<meta property="article:author" content="KKontheway">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Cyfrin-SecurityCourseNote</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/kkontheway">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/03/12/OnlyPwner-PleaseSignHere/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&text=Cyfrin-SecurityCourseNote"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&title=Cyfrin-SecurityCourseNote"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&is_video=false&description=Cyfrin-SecurityCourseNote"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Cyfrin-SecurityCourseNote&body=Check out this article: http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&title=Cyfrin-SecurityCourseNote"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&title=Cyfrin-SecurityCourseNote"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&title=Cyfrin-SecurityCourseNote"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&title=Cyfrin-SecurityCourseNote"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&name=Cyfrin-SecurityCourseNote&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&t=Cyfrin-SecurityCourseNote"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Prev"><span class="toc-number">1.</span> <span class="toc-text">Prev</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-0-Tools"><span class="toc-number">2.</span> <span class="toc-text">Lesson 0 - Tools</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-1-PasswordStore"><span class="toc-number">3.</span> <span class="toc-text">Lesson 1 - PasswordStore</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-2-Puppy-Raffle"><span class="toc-number">4.</span> <span class="toc-text">Lesson 2 - Puppy Raffle</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-3-Tsawp"><span class="toc-number">5.</span> <span class="toc-text">Lesson 3 - Tsawp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-4-Thunder-Loan"><span class="toc-number">6.</span> <span class="toc-text">Lesson 4 - Thunder Loan</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-5-Boss-bridge"><span class="toc-number">7.</span> <span class="toc-text">Lesson 5 - Boss bridge</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-6-Mev-Goverence"><span class="toc-number">8.</span> <span class="toc-text">Lesson 6 - Mev&amp;Goverence</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-7-How-to-Write-Audit-Report-From-each-Lesson"><span class="toc-number">9.</span> <span class="toc-text">Lesson 7 - How to Write Audit Report(From each Lesson)</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Cyfrin-SecurityCourseNote
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">KKontheway</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-04-03T01:37:35.000Z" class="dt-published" itemprop="datePublished">2024-04-03</time>
+        
+        (Updated: <time datetime="2024-04-03T01:37:56.740Z" class="dt-updated" itemprop="dateModified">2024-04-03</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="Prev"><a href="#Prev" class="headerlink" title="Prev"></a>Prev</h1><p>I spent 2 month on Cyfrin Security Course , These are my Note , I take a little deep on each Topic</p>
+<h1 id="Lesson-0-Tools"><a href="#Lesson-0-Tools" class="headerlink" title="Lesson 0 - Tools"></a>Lesson 0 - Tools</h1><ol>
+<li>[Slither]<a target="_blank" rel="noopener" href="https://kkweb3doc.vercel.app/Web3tools/Slither">https://kkweb3doc.vercel.app/Web3tools/Slither</a></li>
+<li>Aderyn</li>
+</ol>
+<h1 id="Lesson-1-PasswordStore"><a href="#Lesson-1-PasswordStore" class="headerlink" title="Lesson 1 - PasswordStore"></a>Lesson 1 - PasswordStore</h1><ol>
+<li>Public Data</li>
+<li><a target="_blank" rel="noopener" href="https://kkweb3doc.vercel.app/security/AccessControl">Access Control Vuln</a></li>
+</ol>
+<h1 id="Lesson-2-Puppy-Raffle"><a href="#Lesson-2-Puppy-Raffle" class="headerlink" title="Lesson 2 - Puppy Raffle"></a>Lesson 2 - Puppy Raffle</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://kkweb3doc.vercel.app/security/Reentrancy">Reentrancy</a></li>
+<li><a target="_blank" rel="noopener" href="https://kkweb3doc.vercel.app/security/WeakRandom">Weak Randomness</a></li>
+<li>[Over&#x2F;Under Flow]</li>
+<li>[Mishandling Of ETH]</li>
+<li>[CEI]</li>
+</ol>
+<h1 id="Lesson-3-Tsawp"><a href="#Lesson-3-Tsawp" class="headerlink" title="Lesson 3 - Tsawp"></a>Lesson 3 - Tsawp</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://kkweb3doc.vercel.app/solidity/Defi/AMM">AMM</a></li>
+<li>Fuzz Test</li>
+<li>Weird ERC20</li>
+</ol>
+<h1 id="Lesson-4-Thunder-Loan"><a href="#Lesson-4-Thunder-Loan" class="headerlink" title="Lesson 4 - Thunder Loan"></a>Lesson 4 - Thunder Loan</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://kkweb3doc.vercel.app/security/ProxySecurity#1unintialized-proxy-vuln">Failure To Initialize</a></li>
+<li><a target="_blank" rel="noopener" href="https://kkweb3doc.vercel.app/security/FlashLoan">Attack FlashLoan</a></li>
+<li><a target="_blank" rel="noopener" href="https://kkweb3doc.vercel.app/solidity/Application/ERC4626">ERC4626</a></li>
+<li><a target="_blank" rel="noopener" href="https://kkweb3doc.vercel.app/security/Oracle&PriceManipulation">Oracle Manipulation</a></li>
+<li><a target="_blank" rel="noopener" href="https://kkweb3doc.vercel.app/security/ProxySecurity#2storage-collision-vulnerability">Storage Collision</a></li>
+</ol>
+<h1 id="Lesson-5-Boss-bridge"><a href="#Lesson-5-Boss-bridge" class="headerlink" title="Lesson 5 - Boss bridge"></a>Lesson 5 - Boss bridge</h1><h1 id="Lesson-6-Mev-Goverence"><a href="#Lesson-6-Mev-Goverence" class="headerlink" title="Lesson 6 - Mev&amp;Goverence"></a>Lesson 6 - Mev&amp;Goverence</h1><h1 id="Lesson-7-How-to-Write-Audit-Report-From-each-Lesson"><a href="#Lesson-7-How-to-Write-Audit-Report-From-each-Lesson" class="headerlink" title="Lesson 7 - How to Write Audit Report(From each Lesson)"></a>Lesson 7 - How to Write Audit Report(From each Lesson)</h1>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/kkontheway">Projects</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Prev"><span class="toc-number">1.</span> <span class="toc-text">Prev</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-0-Tools"><span class="toc-number">2.</span> <span class="toc-text">Lesson 0 - Tools</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-1-PasswordStore"><span class="toc-number">3.</span> <span class="toc-text">Lesson 1 - PasswordStore</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-2-Puppy-Raffle"><span class="toc-number">4.</span> <span class="toc-text">Lesson 2 - Puppy Raffle</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-3-Tsawp"><span class="toc-number">5.</span> <span class="toc-text">Lesson 3 - Tsawp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-4-Thunder-Loan"><span class="toc-number">6.</span> <span class="toc-text">Lesson 4 - Thunder Loan</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-5-Boss-bridge"><span class="toc-number">7.</span> <span class="toc-text">Lesson 5 - Boss bridge</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-6-Mev-Goverence"><span class="toc-number">8.</span> <span class="toc-text">Lesson 6 - Mev&amp;Goverence</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lesson-7-How-to-Write-Audit-Report-From-each-Lesson"><span class="toc-number">9.</span> <span class="toc-text">Lesson 7 - How to Write Audit Report(From each Lesson)</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&text=Cyfrin-SecurityCourseNote"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&title=Cyfrin-SecurityCourseNote"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&is_video=false&description=Cyfrin-SecurityCourseNote"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Cyfrin-SecurityCourseNote&body=Check out this article: http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&title=Cyfrin-SecurityCourseNote"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&title=Cyfrin-SecurityCourseNote"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&title=Cyfrin-SecurityCourseNote"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&title=Cyfrin-SecurityCourseNote"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&name=Cyfrin-SecurityCourseNote&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/04/03/Cyfrin-SecurityCourseNote/&t=Cyfrin-SecurityCourseNote"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    KKontheway
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/kkontheway">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
