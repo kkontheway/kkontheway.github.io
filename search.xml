@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Paradigm2023-100%</title>
+      <link href="/2024/04/11/Paradigm2023-100/"/>
+      <url>/2024/04/11/Paradigm2023-100/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Your funds are safe when you use our innovative new payment splitter that ensure that 100% of assets make it to their intended recipients</p><h1 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h1><p>Drain all $ETH from the deployed Split and SplitWallet contracts.</p><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p><code>Split</code>: Implement one NFT Called <code>Split</code>, and it can assign a group of user can withdraw tokens by the pre-defined ratio. Each new <code>Split</code> NFT will bind with a new SplitWallet contract. </p><p><code>SplitWallet</code>: The token receiver point of each Split. </p><p><code>Split::distribute()</code>：Can take the token from the <code>Wallet</code> to <code>Split</code> contract.</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>We can find that <code>Split::distribute()</code>：Can take the token from the <code>Wallet</code> to <code>Split</code> contract simply, but the problem is to drain the $ETH from Split.</p><p>The key is in the <code>Split::_hashSplit()</code>, there are Abi Hash Collisions problem in <code>abi.encodePacked</code>, </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function _hashSplit(address[] memory accounts, uint32[] memory percents, uint32 relayerFee)</span><br><span class="line">        internal</span><br><span class="line">        pure</span><br><span class="line">        returns (bytes32)</span><br><span class="line">    &#123;</span><br><span class="line">        return keccak256(abi.encodePacked(accounts, percents, relayerFee));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>which means:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abi.encodePacked([account1,account2],[percents1,percents2],relayerfee) = abi.encodePacked([account1],[account2,percents1,percents2],relayerfee)</span><br></pre></td></tr></table></figure><p>We have 100$ ETH at begin, so we can deposit create our own <code>accounts[]</code>,and let last acconut be the first account percent value that bypass the restriction that the sum value of the percent of a Split must be exactly 100% (1e6).</p><h1 id="Exp"><a href="#Exp" class="headerlink" title="Exp"></a>Exp</h1><p>Full code is here.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Cyfrin-SecurityCourseNote</title>
       <link href="/2024/04/03/Cyfrin-SecurityCourseNote/"/>
       <url>/2024/04/03/Cyfrin-SecurityCourseNote/</url>
