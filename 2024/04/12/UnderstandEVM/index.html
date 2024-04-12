@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Intro EVM 只是一个计算引擎，因此提供了计算和存储的抽象，例如类似于 Java 虚拟机 (JVM) 规范。从高层次的角度来看，JVM 旨在提供与底层主机操作系统或硬件无关的运行时环境，从而实现跨各种系统的兼容性。因此，EVM 没有调度功能，因为执行顺序是在其外部组织的——以太坊客户端通过经过验证的块交易运行来确定哪些智能合约需要执行以及按什么顺序执行。从这个意义上说，以太坊世界计算机是单线">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UnderstandEVM">
+<meta property="og:url" content="http://example.com/2024/04/12/UnderstandEVM/index.html">
+<meta property="og:site_name" content="KK&#39;s Note">
+<meta property="og:description" content="Intro EVM 只是一个计算引擎，因此提供了计算和存储的抽象，例如类似于 Java 虚拟机 (JVM) 规范。从高层次的角度来看，JVM 旨在提供与底层主机操作系统或硬件无关的运行时环境，从而实现跨各种系统的兼容性。因此，EVM 没有调度功能，因为执行顺序是在其外部组织的——以太坊客户端通过经过验证的块交易运行来确定哪些智能合约需要执行以及按什么顺序执行。从这个意义上说，以太坊世界计算机是单线">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ethereum.org/content/developers/docs/evm/evm.png">
+<meta property="og:image" content="http://example.com/image-1.png">
+<meta property="article:published_time" content="2024-04-12T07:18:02.000Z">
+<meta property="article:modified_time" content="2024-04-12T08:59:37.288Z">
+<meta property="article:author" content="KKontheway">
+<meta property="article:tag" content="EVM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ethereum.org/content/developers/docs/evm/evm.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>UnderstandEVM</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/kkontheway">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/04/11/Paradigm2023-100/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/04/12/UnderstandEVM/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/04/12/UnderstandEVM/&text=UnderstandEVM"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/04/12/UnderstandEVM/&title=UnderstandEVM"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/04/12/UnderstandEVM/&is_video=false&description=UnderstandEVM"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=UnderstandEVM&body=Check out this article: http://example.com/2024/04/12/UnderstandEVM/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/04/12/UnderstandEVM/&title=UnderstandEVM"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/04/12/UnderstandEVM/&title=UnderstandEVM"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/04/12/UnderstandEVM/&title=UnderstandEVM"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/04/12/UnderstandEVM/&title=UnderstandEVM"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/04/12/UnderstandEVM/&name=UnderstandEVM&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/04/12/UnderstandEVM/&t=UnderstandEVM"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Intro"><span class="toc-number">1.</span> <span class="toc-text">Intro</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Level-1"><span class="toc-number">2.</span> <span class="toc-text">Level-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E6%A0%88"><span class="toc-number">2.1.</span> <span class="toc-text">堆栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transactions"><span class="toc-number">2.2.</span> <span class="toc-text">Transactions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ByteCode"><span class="toc-number">2.3.</span> <span class="toc-text">ByteCode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#State"><span class="toc-number">2.4.</span> <span class="toc-text">State</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Level-2"><span class="toc-number">3.</span> <span class="toc-text">Level-2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#More-About-Stacks"><span class="toc-number">3.1.</span> <span class="toc-text">More About Stacks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creation-Runtime-Code"><span class="toc-number">3.2.</span> <span class="toc-text">Creation&amp;Runtime Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fucntion-Selector"><span class="toc-number">3.3.</span> <span class="toc-text">Fucntion Selector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-Hash"><span class="toc-number">3.4.</span> <span class="toc-text">Metadata Hash</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Level-3"><span class="toc-number">4.</span> <span class="toc-text">Level-3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Memory"><span class="toc-number">4.1.</span> <span class="toc-text">Memory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storage"><span class="toc-number">4.2.</span> <span class="toc-text">Storage</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        UnderstandEVM
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">KKontheway</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-04-12T07:18:02.000Z" class="dt-published" itemprop="datePublished">2024-04-12</time>
+        
+        (Updated: <time datetime="2024-04-12T08:59:37.288Z" class="dt-updated" itemprop="dateModified">2024-04-12</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/EVM/" rel="tag">EVM</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><hr>
+<p>EVM 只是一个计算引擎，因此提供了计算和存储的抽象，例如类似于 Java 虚拟机 (JVM) 规范。从高层次的角度来看，JVM 旨在提供与底层主机操作系统或硬件无关的运行时环境，从而实现跨各种系统的兼容性。<br>因此，EVM 没有调度功能，因为执行顺序是在其外部组织的——以太坊客户端通过经过验证的块交易运行来确定哪些智能合约需要执行以及按什么顺序执行。从这个意义上说，以太坊世界计算机是单线程的，就像 JavaScript 一样。 EVM 也没有任何“系统接口”处理或“硬件支持”——没有可以连接的物理机器。以太坊世界计算机是完全虚拟的。</p>
+<h1 id="Level-1"><a href="#Level-1" class="headerlink" title="Level-1"></a>Level-1</h1><hr>
+<h2 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h2><p>EVM是基于堆栈的架构，将所有内存的值存储在了堆栈上。大小是256位。<br><img src="https://ethereum.org/content/developers/docs/evm/evm.png"></p>
+<h2 id="Transactions"><a href="#Transactions" class="headerlink" title="Transactions"></a>Transactions</h2><p>交易是来自账户的加密签名指令。有两种类型的交:</p>
+<ol>
+<li>导致消息调用的交易</li>
+<li>导致合约创建的交易</li>
+</ol>
+<h2 id="ByteCode"><a href="#ByteCode" class="headerlink" title="ByteCode"></a>ByteCode</h2><p>EVM ByteCode支持大部分的操作，包括了:</p>
+<ol>
+<li>算术运算</li>
+<li>上下文查询</li>
+<li>堆栈，内存和存储访问</li>
+<li>控制流程</li>
+<li>Log，calling</li>
+</ol>
+<h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><p>EVM 的工作是通过计算智能合约代码执行的有效状态转换来更新以太坊状态。<br>在最高级，我们有一些以太坊World State。World state是地址到账户的音社。<br>在低级别，每个地址代表一个账户，其中有余额，随机数(如果是 EOA，则表示从该帐户成功发送的交易数量，或者如果是合约账户，则包含其创建的合约的数量),账户的存储和程序代码。</p>
+<ul>
+<li>EOA始终没有代码，并且存储空间为空。</li>
+</ul>
+<h1 id="Level-2"><a href="#Level-2" class="headerlink" title="Level-2"></a>Level-2</h1><hr>
+<p>首先我们要明确几件事:</p>
+<ul>
+<li>当EVM执行代码的时候，它总是自上而下的执行代码，也就是代码没有其余的入口点，总是从顶部开始.</li>
+<li>Creation Code是在transaction中执行的，会返回世纪的runtime code。</li>
+<li>构造函数是Creation Code的一部分，而不是Runtime Code。</li>
+<li>当部署构造函数中有参数的合约时，参数会作为原始十六进制数据附加到代码的末尾。</li>
+<li>在执行函数体之前，函数的参数会被加载到堆栈中，以便接下来的代码可以使用它们</li>
+</ul>
+<h2 id="More-About-Stacks"><a href="#More-About-Stacks" class="headerlink" title="More About Stacks"></a>More About Stacks</h2><h2 id="Creation-Runtime-Code"><a href="#Creation-Runtime-Code" class="headerlink" title="Creation&amp;Runtime Code"></a>Creation&amp;Runtime Code</h2><p>当部署一个合约的时候，一个合约会被编译成几段代码，Creation Code, Runtime Code, Metadata<br><img src="/image-1.png" alt="alt text"></p>
+<h2 id="Fucntion-Selector"><a href="#Fucntion-Selector" class="headerlink" title="Fucntion Selector"></a>Fucntion Selector</h2><p>当我调用合约函数的时候，我们会包含一些调用数据，用于指定我们正在调用的函数签名和需要传入的参数，在solidity中一般这么写:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bytes memory functionCalldata = abi.encodeWitSignature(&quot;store(uint256)&quot;,10)</span><br><span class="line">address(storageContract).call(functionCalldata);</span><br></pre></td></tr></table></figure>
+<p>functionCallData会返回:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0x6057361d000000000000000000000000000000000000000000000000000000000000000a</span><br></pre></td></tr></table></figure>
+<p><code>0x6057361d</code>就是函数选择器，也是Keccak哈希值的前四个字节，后32个字节是我们的uint256输入参数</p>
+<h2 id="Metadata-Hash"><a href="#Metadata-Hash" class="headerlink" title="Metadata Hash"></a>Metadata Hash</h2><h1 id="Level-3"><a href="#Level-3" class="headerlink" title="Level-3"></a>Level-3</h1><hr>
+<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><h2 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h2>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Archives</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/kkontheway">Projects</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Intro"><span class="toc-number">1.</span> <span class="toc-text">Intro</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Level-1"><span class="toc-number">2.</span> <span class="toc-text">Level-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E6%A0%88"><span class="toc-number">2.1.</span> <span class="toc-text">堆栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transactions"><span class="toc-number">2.2.</span> <span class="toc-text">Transactions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ByteCode"><span class="toc-number">2.3.</span> <span class="toc-text">ByteCode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#State"><span class="toc-number">2.4.</span> <span class="toc-text">State</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Level-2"><span class="toc-number">3.</span> <span class="toc-text">Level-2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#More-About-Stacks"><span class="toc-number">3.1.</span> <span class="toc-text">More About Stacks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creation-Runtime-Code"><span class="toc-number">3.2.</span> <span class="toc-text">Creation&amp;Runtime Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fucntion-Selector"><span class="toc-number">3.3.</span> <span class="toc-text">Fucntion Selector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Metadata-Hash"><span class="toc-number">3.4.</span> <span class="toc-text">Metadata Hash</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Level-3"><span class="toc-number">4.</span> <span class="toc-text">Level-3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Memory"><span class="toc-number">4.1.</span> <span class="toc-text">Memory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Storage"><span class="toc-number">4.2.</span> <span class="toc-text">Storage</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/04/12/UnderstandEVM/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/04/12/UnderstandEVM/&text=UnderstandEVM"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/04/12/UnderstandEVM/&title=UnderstandEVM"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/04/12/UnderstandEVM/&is_video=false&description=UnderstandEVM"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=UnderstandEVM&body=Check out this article: http://example.com/2024/04/12/UnderstandEVM/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/04/12/UnderstandEVM/&title=UnderstandEVM"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/04/12/UnderstandEVM/&title=UnderstandEVM"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/04/12/UnderstandEVM/&title=UnderstandEVM"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/04/12/UnderstandEVM/&title=UnderstandEVM"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/04/12/UnderstandEVM/&name=UnderstandEVM&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/04/12/UnderstandEVM/&t=UnderstandEVM"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    KKontheway
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Archives</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/kkontheway">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
