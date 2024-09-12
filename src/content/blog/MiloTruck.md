@@ -2,7 +2,7 @@
 title: MiloTruck EVM-CTF Solutions
 author: KK
 pubDatetime: 2024-09-12T12:34:56Z
-slug: MiloTruckEVM-CTFSolutions
+slug: MiloTruckEVMCTFSolutions
 featured: false
 draft: false
 tags:
