@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: KK's Note
 subtitle: ""
-description: ""
-keywords:
-author: John Doe
+description: "Born2Be"
+keywords: ""
+author: KKontheway
 language: en
 timezone: ""
 
@@ -61,7 +61,7 @@ prismjs:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ""
-  per_page: 10
+  per_page: 8
   order_by: -date
 
 # Category & Tag
@@ -96,7 +96,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: anzhiyu
+theme: cactus
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
